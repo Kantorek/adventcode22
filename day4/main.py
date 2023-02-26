@@ -1,7 +1,7 @@
 first_sectors = []
 second_sectors = []
 sum_of_overlaps = 0
-for line in open('day4/test'):
+for line in open('day4/input'):
   line = line.replace('\n', '')
   line = line.replace('-', ',')
   line = line.split(',')
@@ -13,18 +13,18 @@ for line in open('day4/test'):
   print(first_sectors, second_sectors)
   if len(first_sectors) > len(second_sectors):
     for sec in first_sectors:
-      if sec not in first_sectors:
+      if sec not in second_sectors:
         continue
       second_sectors.remove(sec)
     if not second_sectors:
       sum_of_overlaps = sum_of_overlaps + 1
   elif len(second_sectors) >= len(first_sectors):
     for sec in second_sectors:
-      if sec not in second_sectors:
+      if sec not in first_sectors:
         continue
       first_sectors.remove(sec)
     if not first_sectors:
       sum_of_overlaps = sum_of_overlaps + 1
-    first_sectors.clear()
-    second_sectors.clear()
+  first_sectors.clear()
+  second_sectors.clear()
 print(sum_of_overlaps)
