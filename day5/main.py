@@ -9,6 +9,8 @@ for line in open('day5/input.txt'):
   line = line.split('] ')
   for col in range(len(line)):
     if line[col] != '0':
-      crates[col].append(line[col])
+      crates[col].insert(0, line[col])
   print(line)
+print(crates)
+crates[8].append(crates[0].pop())
 print(crates)
