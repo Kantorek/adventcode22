@@ -24,6 +24,7 @@ for line in open('day5/input.txt'):
     for num in range(num_of_crates):
       crates[dest_pile].append(crates[take_pile].pop())
 print(crates)
-
+top_crates = []
 for last in range(len(crates)):
-  print(crates[last][-1])
+  top_crates.append(crates[last][-1])
+print(''.join(top_crates))
