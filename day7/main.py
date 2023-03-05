@@ -1,2 +1,4 @@
+term_data = []
 for data in open('day7/input'):
-  pass
+  term_data.append(data)
+print(term_data)
