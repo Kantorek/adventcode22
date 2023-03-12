@@ -1,11 +1,12 @@
-dir_list = {}
-def is_dir(x: str):
-  if x[0:3] == 'dir' and x[4] not in dir_list.keys():
-    dir_list.update({x[4]: 0})
-term_data = []
-for data in open('day7/test'):
-  data = data.replace('\n', '')
-  term_data.append(data)
-  is_dir(data)
-print(term_data)
+dir_list = {'home/': 0}
+path = 'home'
+for com in open('day7/test'):
+  com = com.replace('\n', '')
+  if com[2:] == 'cd /':
+    pass
+  elif com[2:] == 'cd ..':
+    path = path[:path.rfind('/')]
+  elif com[2:4] == 'cd':
+    path = path + '/' + com[5:]
+    dir_list.update({path: 0})
 print(dir_list)
