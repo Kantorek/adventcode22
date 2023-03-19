@@ -1,7 +1,8 @@
 dir_list = {'home': 0}
 path = 'home'
 is_listing = False
-for com in open('day7/test'):
+small_files_size = 0
+for com in open('day7/input'):
   com = com.replace('\n', '')
   if com[2:] == 'cd /':
     pass
@@ -24,4 +25,7 @@ for com in open('day7/test'):
           loc = loc + '/' + location
         dir_list[loc] = dir_list[loc] + int(size)
 print(dir_list)
-
+for size in dir_list.values():
+  if size <= 100000:
+    small_files_size = small_files_size + size
+print("Small file size is: {}".format(small_files_size))
