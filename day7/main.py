@@ -2,6 +2,9 @@ dir_list = {'home': 0}
 path = 'home'
 is_listing = False
 small_files_size = 0
+disk_size = 70000000
+update_size = 30000000
+dir_to_delete = disk_size
 for com in open('day7/input'):
   com = com.replace('\n', '')
   if com[2:] == 'cd /':
@@ -25,7 +28,11 @@ for com in open('day7/input'):
           loc = loc + '/' + location
         dir_list[loc] = dir_list[loc] + int(size)
 print(dir_list)
+free_space = disk_size - dir_list['home']
 for size in dir_list.values():
   if size <= 100000:
     small_files_size = small_files_size + size
+  if size >= update_size - free_space:
+    dir_to_delete = min(size, dir_to_delete)
 print("Small file size is: {}".format(small_files_size))
+print("Directory to delete take: {}".format(dir_to_delete))
