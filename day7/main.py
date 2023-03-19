@@ -35,4 +35,4 @@ for size in dir_list.values():
   if size >= update_size - free_space:
     dir_to_delete = min(size, dir_to_delete)
 print("Small file size is: {}".format(small_files_size))
-print("Directory to delete take: {}".format(dir_to_delete))
+print("Directory to delete takes: {}".format(dir_to_delete))
