@@ -1,7 +1,7 @@
 dir_list = {'home': 0}
 path = 'home'
 is_listing = False
-for com in open('day7/input'):
+for com in open('day7/test'):
   com = com.replace('\n', '')
   if com[2:] == 'cd /':
     pass
@@ -17,6 +17,11 @@ for com in open('day7/input'):
       is_listing = False
       continue
     if com[0] != 'd':
-      com = com[:com.rfind(' ')]
-      dir_list[path] = dir_list[path] + int(com)
+      size = com[:com.rfind(' ')]
+      loc = 'home'
+      for location in path.split('/'):
+        if location != 'home':
+          loc = loc + '/' + location
+        dir_list[loc] = dir_list[loc] + int(size)
 print(dir_list)
+
