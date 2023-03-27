@@ -1,6 +1,6 @@
 forrest = []
 tree_see = 0
-for line in open('day8/input'):
+for line in open('day8/test'):
   line = line.replace('\n', '')
   forrest.append(list(map(int,line)))
 width = len(forrest)
