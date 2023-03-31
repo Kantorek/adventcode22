@@ -13,17 +13,12 @@ for i, u2d in enumerate(forrest[1:-1]):
     for col in range(width):
       col_for.append(forrest[col][j+1])
     if max(forrest[i+1][:j+1]) < l2r:
-      print(forrest[i+1][:j+1])
       tree_see = tree_see + 1
     elif max(forrest[i+1][j+2:]) < l2r:
-      print(forrest[i+1][j+2:])
       tree_see = tree_see + 1
     elif max(col_for[:i+1]) < l2r:
-      print(col_for[:i+1])
       tree_see = tree_see + 1
     elif max(col_for[i+2:]) < l2r:
-      print(col_for[i+2:])
       tree_see = tree_see + 1
     col_for = []
 print("Visible trees: {}".format(tree_see))
-# 1827
