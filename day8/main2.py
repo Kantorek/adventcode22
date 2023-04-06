@@ -1,6 +1,7 @@
-def tree_score(trees: list) -> int:
+def tree_view(trees: list) -> int:
   tree_points = 1
-  highest_tree = trees.pop()
+  if trees:
+    highest_tree = trees.pop()
   while trees:  
     if trees[-1] >= highest_tree:
       tree_points = tree_points + 1
@@ -23,7 +24,7 @@ for i, u2d in enumerate(forrest):
     south = col_for[i+1:].reverse()
     west = u2d[:j]
     east = u2d[j+1:].reverse()
+    tree_score = max(tree_score, tree_view(north)*tree_view(south)*tree_view(east)*tree_view(west))
     
-      
     col_for = []
-print("Visible trees: {}".format(tree_point))
+print("Visible trees: {}".format(tree_score))
