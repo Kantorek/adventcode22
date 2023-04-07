@@ -11,7 +11,7 @@ def tree_view(trees: list, x_tree: int) -> int:
 forrest = []
 tree_score = 0
 col_for = []
-for line in open('day8/inputccchc'):
+for line in open('day8/input'):
   line = line.replace('\n', '')
   forrest.append(list(map(int,line)))
 
