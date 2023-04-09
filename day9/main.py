@@ -1,8 +1,11 @@
+def tail(head_p: tuple(int, int), tail_p: tuple(int, int)):
+  pass
+
 size = 6
 matrix = [['-' for x in range(size)] for _ in range(size)]
 step = 0
 x, y = int(len(matrix[0])/2), int(len(matrix[0])/2)
-x, y = 5, 0
+x, y = 0, 5
 matrix[x][y] = 's'
 
 for line in open('day9/test'):
@@ -10,22 +13,22 @@ for line in open('day9/test'):
   length = int(line[2])
   if way == 'D':
     while length:
-      x += 1
+      y += 1
       matrix[x][y] = '#'
       length -= 1
   elif way == 'U':
     while length:
-      x -= 1
+      y -= 1
       matrix[x][y] = '#'
       length -= 1
   elif way == 'L':
     while length:
-      y -= 1
+      x -= 1
       matrix[x][y] = '#'
       length -= 1
   elif way == 'R':
     while length:
-      y += 1
+      x += 1
       matrix[x][y] = '#'
       length -= 1
 
