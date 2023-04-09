@@ -1,7 +1,6 @@
 def tail(x_head: int, y_head: int, x_tail: int, y_tail: 
   int, x_prev: int, y_prev: int) -> list:
-  if abs(x_head-x_tail) >= 1 or abs(y_head-y_tail) >= 1:
-    matrix[y_tail][x_tail] = '#'
+  if abs(x_tail-x_head) >= 1 or abs(y_tail-y_head) >= 1:
     return [x_prev, y_prev]
   return [x_tail, y_tail]
 
@@ -26,6 +25,7 @@ for line in open('day9/test'):
       new_tail = tail(x, y, x_t, y_t, x_p, y_p)
       x_t = new_tail[0]
       y_t = new_tail[1]
+      matrix[y_t][x_t] = '#'
       length -= 1
   elif way == 'U':
     while length:
@@ -34,6 +34,7 @@ for line in open('day9/test'):
       new_tail = tail(x, y, x_t, y_t, x_p, y_p)
       x_t = new_tail[0]
       y_t = new_tail[1]
+      matrix[y_t][x_t] = '#'
       length -= 1
   elif way == 'L':
     while length:
@@ -42,14 +43,16 @@ for line in open('day9/test'):
       new_tail = tail(x, y, x_t, y_t, x_p, y_p)
       x_t = new_tail[0]
       y_t = new_tail[1]
+      matrix[y_t][x_t] = '#'
       length -= 1
   elif way == 'R':
     while length:
       x_p = x
       x += 1
-      ew_tail = tail(x, y, x_t, y_t, x_p, y_p)
+      new_tail = tail(x, y, x_t, y_t, x_p, y_p)
       x_t = new_tail[0]
       y_t = new_tail[1]
+      matrix[y_t][x_t] = '#'
       length -= 1
 
 for row in matrix:
