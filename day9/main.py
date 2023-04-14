@@ -16,6 +16,7 @@ new_tail = [0, 0]
 matrix[y][x] = 's'
 sum = 0
 
+
 for line in open('day9/test'):
   way = line[0]
   length = int(line[2])
