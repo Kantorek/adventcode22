@@ -5,19 +5,19 @@ def tail(x_head: int, y_head: int, x_tail: int, y_tail: int,
   return [x_tail, y_tail]
 
 
-size = 6
+size = 2000
 matrix = [['-' for x in range(size)] for _ in range(size)]
 step = 0
-y, x = int(len(matrix[0])/2), int(len(matrix[0])/2)
-y, x = 5, 0
+y, x = int(len(matrix[0])/2), 10
+#y, x = 5, 0
 path = [[y, x]]
-y_t, x_t = 5, 0
+y_t, x_t = y, x
 new_tail = [0, 0]
 matrix[y][x] = 's'
 sum = 0
 
 
-for line in open('day9/test'):
+for line in open('day9/input'):
   way = line[0]
   length = int(line[2])
   if way == 'D':
@@ -62,5 +62,5 @@ for row in matrix:
   for col in row:
     if col == '#':
       sum += 1
-print(path)
+
 print(sum)
