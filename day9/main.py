@@ -10,7 +10,7 @@ matrix = [['-' for x in range(size)] for _ in range(size)]
 step = 0
 y, x = int(len(matrix[0])/2), int(len(matrix[0])/2)
 y, x = 5, 0
-y_p, x_p = 5, 0
+path = [[y, x]]
 y_t, x_t = 5, 0
 new_tail = [0, 0]
 matrix[y][x] = 's'
@@ -22,36 +22,36 @@ for line in open('day9/test'):
   length = int(line[2])
   if way == 'D':
     while length:
-      new_tail = tail(x, y, x_t, y_t, x_p, y_p)
-      y_p = y 
       y += 1
+      path.append([y, x])
+      new_tail = tail(x, y, x_t, y_t, path[-2][1], path[-2][0])
       x_t = new_tail[0]
       y_t = new_tail[1]
       matrix[y_t][x_t] = '#'
       length -= 1
   elif way == 'U':
     while length:
-      new_tail = tail(x, y, x_t, y_t, x_p, y_p)
-      y_p = y
       y -= 1
+      path.append([y, x])
+      new_tail = tail(x, y, x_t, y_t, path[-2][1], path[-2][0])
       x_t = new_tail[0]
       y_t = new_tail[1]
       matrix[y_t][x_t] = '#'
       length -= 1
   elif way == 'L':
     while length:
-      new_tail = tail(x, y, x_t, y_t, x_p, y_p)
-      x_p = x
       x -= 1
+      path.append([y, x])
+      new_tail = tail(x, y, x_t, y_t, path[-2][1], path[-2][0])
       x_t = new_tail[0]
       y_t = new_tail[1]
       matrix[y_t][x_t] = '#'
       length -= 1
   elif way == 'R':
     while length:
-      new_tail = tail(x, y, x_t, y_t, x_p, y_p)
-      x_p = x
       x += 1
+      path.append([y, x])
+      new_tail = tail(x, y, x_t, y_t, path[-2][1], path[-2][0])
       x_t = new_tail[0]
       y_t = new_tail[1]
       matrix[y_t][x_t] = '#'
@@ -62,4 +62,5 @@ for row in matrix:
   for col in row:
     if col == '#':
       sum += 1
+print(path)
 print(sum)
