@@ -63,4 +63,4 @@ for row in matrix:
     if col == '#':
       sum += 1
 
-print(sum)
+print(sum*2 + 1)
